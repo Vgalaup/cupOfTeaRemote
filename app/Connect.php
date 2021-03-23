@@ -11,7 +11,7 @@ abstract class Connect{
     public function connexion(){
         try{       
                 // objet qui appartient a php et qui me permet ma connexion 
-                $pdo = new PDO('mysql:host='.$this->_host.';port=3307;dbname='.$this->_dbName,$this->_user,$this->_password);
+                $pdo = new PDO('mysql:host='.$this->_host.';dbname='.$this->_dbName,$this->_user,$this->_password);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $pdo->exec('SET NAMES UTF8');
                 return $pdo;
