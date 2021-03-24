@@ -23,13 +23,4 @@ class Category extends Connect{
         return $q->fetchAll(PDO::FETCH_ASSOC);
     }
     
-
-    
-
-
-
-    
-
-    
-    
 }

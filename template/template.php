@@ -33,7 +33,13 @@
                 <nav> <!--flex-->
                     <a href="index.php?action=listing">thés</a>
                     <a href="index.php?action=about">notre histoire</a>
+                    <?php if($http->isOnline() === false ) : ?>
                     <a href="index.php?action=register">s'enregitrer</a>
+                    <a href="index.php?action=login">connexion</a>
+                    <?php else : ?>
+                    <a href="index.php?action=account">Mon compte</a>
+                    <a href="index.php?action=logout">déconnexion</a>
+                    <?php endif; ?>
                 </nav>
             </div>
 

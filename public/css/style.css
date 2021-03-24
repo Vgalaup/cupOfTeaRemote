@@ -695,6 +695,11 @@ FIN CSS MEDIA QUERIES
     display:flex;
     flex-direction:column;
 }
+
+.flexR{
+    display:flex;
+    flex-direction: row;
+}
 /* form */
 form {
     width :700px;

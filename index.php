@@ -1,18 +1,24 @@
 <?php 
+session_start();
 
 // récupere mes classes 
 require_once 'app/Connect.php';
-require_once 'app/Functions.php';
+require_once 'app/Https.php';
+require_once 'app/Cookies.php';
 require_once 'models/Product.php';
 require_once 'models/Category.php';
+require_once 'models/User.php';
+require_once 'controller/FormController.php';
+
 
 
 // j'intancie mes classes 
-//$userModel       = new User();
-$func            = new Functions();
+$userModel       = new User();
+$http            = new Https();
+$cookies         = new Cookies();
 $productModel    = new Product();
 $categoryModel   = new Category();
-// $formController  = new FormController($userModel); // voir php3 -> exercice composition 
+$formController  = new FormController($userModel); // voir php3 -> exercice composition 
 
 
 // pour le format de mes valeurs 
@@ -47,21 +53,54 @@ if(array_key_exists('action',$_GET)){
             $product = $productModel->findOne($_GET['pId']); // récupere un produit 
             $path = 'product.php';
         break;
+
+        // cases qui impliquent la création de compte, connexion et deconnexion  
+        case 'register':
+            //  s'il est en ligne redirigé vers accueil sinon on fait rien 
+            ($http->isOnline()) ? $http->redirect('index.php') : '' ; 
+
+            /* equivalent à 
+            if($http->isOnline() == true){
+                $http->redirect('index.php');
+            }*/
+
+            if($_POST):
+                $message = $formController->controlRegister($_POST); // controler le formulaire d'enregistrement 
+                //var_dump($message);
+            endif;
+            $path = 'register.php';
+        break;
+        case 'login':
+            // voir explication case register 
+            ($http->isOnline()) ? $http->redirect('index.php') : '' ; 
+
+            if($_POST):
+                $message = $formController->controlLogin($_POST); // controler le formulaire de connexion 
+                //var_dump($message);
+            endif;
+            $path = 'login.php';
+        break;
+        case 'logout':
+            session_destroy();
+            
+            $http->redirect('index.php');
+        break;
+
+        // case qui implique la gestion du profil 
+        case 'account':
+            $path = 'account.php';
+        break;
+
         default:
-            $func->redirect('index.php');
+            $http->redirect('index.php');
+    
     }
       
 }else{
     
-    $func->redirect('index.php?action=home');
+    $http->redirect('index.php?action=home');
     
 }
-
-
-
-
-
-
 
 
 
