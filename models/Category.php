@@ -2,7 +2,7 @@
 
 class Category extends Connect{
     
-    protected $_pdo;
+    protected object $_pdo;
     
     public function __construct(){
         
@@ -22,14 +22,5 @@ class Category extends Connect{
         
         return $q->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-
-    
-
-
-
-    
-
-    
     
 }

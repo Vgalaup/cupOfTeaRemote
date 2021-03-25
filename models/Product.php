@@ -2,7 +2,7 @@
 
 class Product extends Connect{
     
-    protected  $_pdo;
+    protected object $_pdo;
     
     public function __construct(){
         
