@@ -40,7 +40,7 @@ class User extends Connect{
      */
     public function findOne($mail){
         
-        $sql = "SELECT `id`, `email`, `password`, `firstName`, `lastName`,`role` FROM `users` WHERE `email` = :mail";
+        $sql = "SELECT `id`, `email`, `password`, `firstName`, `lastName`,address, `role` FROM `users` WHERE `email` = :mail";
         $q = $this->_pdo->prepare($sql);
         $q->execute([
                     ':mail' => $mail
@@ -50,8 +50,32 @@ class User extends Connect{
     }
     
     
-    
-    
+    public function changePass(array $data)
+    {
+        $data['password'] = password_hash($data['password2'], PASSWORD_DEFAULT);
+
+        $sql = "UPDATE `users` SET `password`= :password WHERE `id` = :id";
+        $q = $this->_pdo->prepare($sql);
+        $q->execute([
+            ':password' => $data['password'],
+            ':id'       => $data['id']
+        ]);
+
+    }
+
+
+    public function updateInfo(array $data)
+    {        
+        $sql = "UPDATE `users` SET `address`=:address,`firstName`=:firstname,`lastName`=:lastname WHERE id=:id";
+        $q = $this->_pdo->prepare($sql);
+        $q->execute([
+            ':address'     => $data['address'],
+            ':firstname'   => $data['firstName'],
+            ':lastname'    => $data['lastName'],
+            ':id'          => $data['id']    
+        ]);
+
+    }
 
     
 }

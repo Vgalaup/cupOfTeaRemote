@@ -860,3 +860,14 @@ tbody tr td:last-of-type{
 .facture{
     margin: 40px;
 }
+
+
+/* my account */
+.accountContent{
+    margin: 0px 0px 100px 100px;
+}
+
+
+.hidediv{
+    display:none;
+}

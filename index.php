@@ -9,6 +9,7 @@ require_once 'models/Product.php';
 require_once 'models/Category.php';
 require_once 'models/User.php';
 require_once 'controller/FormController.php';
+require_once 'controller/AjaxController.php';
 
 
 
@@ -24,8 +25,29 @@ $formController  = new FormController($userModel); // voir php3 -> exercice comp
 // pour le format de mes valeurs 
 $fmt = new NumberFormatter( 'fr_FR', NumberFormatter::CURRENCY );
 
+if(array_key_exists('ajax',$_GET)){
+    
+    // redirige vers home s'il n'y a pas de $_POST
+    if(!array_key_exists('action', $_POST)) 
+        $http->redirect('index.php?action=home');
+    
+    $ajax = new AjaxController();
+    
+    switch($_POST['action']) 
+    {
+        case 'upPass':
+            // var_dump($_POST);
+            echo $ajax->changePassword($_POST);
+        break;
 
-if(array_key_exists('action',$_GET)){
+        case 'upInfo':
+            $message = $ajax->formUpInfo($_POST);
+            echo json_encode($message);
+        break;
+    }
+    
+}
+elseif(array_key_exists('action',$_GET)){
     
     switch($_GET['action']){
         
@@ -82,20 +104,24 @@ if(array_key_exists('action',$_GET)){
         break;
         case 'logout':
             session_destroy();
-            
             $http->redirect('index.php');
         break;
 
         // case qui implique la gestion du profil 
         case 'account':
             $path = 'account.php';
+            
         break;
 
         default:
             $http->redirect('index.php');
     
     }
-      
+     
+
+    // récuperation du template 
+    require 'template/template.php';
+
 }else{
     
     $http->redirect('index.php?action=home');
@@ -104,6 +130,3 @@ if(array_key_exists('action',$_GET)){
 
 
 
-
-// récuperation du template 
-require 'template/template.php';

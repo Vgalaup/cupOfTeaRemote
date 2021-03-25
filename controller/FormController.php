@@ -107,6 +107,7 @@ class FormController{
                 $_SESSION['firstName']      = htmlspecialchars($user['firstName']);
                 $_SESSION['lastName']       = htmlspecialchars($user['lastName']);
                 $_SESSION['email']          = htmlspecialchars($user['email']);
+                $_SESSION['address']        = htmlspecialchars($user['address']);
                 $_SESSION['role']           = $user['role'];
                 
                 // je pourrai ajouter l'adresse de l'user en cas de commande pour indiquer le lieu de livraison
@@ -124,6 +125,62 @@ class FormController{
         
         
     }
-    
+
+
+    public function formNewPass(array $post):string
+    {
+        if(!empty($post['password1']) 
+            && !empty($post['password2']) 
+            && !empty($post['password3']) 
+            && !empty($post['id']))
+        {
+            $user = $this->_user->findOne($_SESSION['email']);
+
+            if(password_verify($post['password1'], $user['password']) == false){
+                return "Mot de passe incorrect";   
+            }
+
+            if($post['password2'] != $post['password3']){
+                return 'les deux mots de passe ne concordent pas';
+            }
+             
+            $this->_user->changePass($post);
+            return 'la modification sera prise en compte a la prochaine connexion';
+            
+        } else {
+            return " veuillez remplir les champs";
+        }
+
+        
+    }
+
+    public function formUpInfo(array $data) :string
+    {
+
+        if(!empty($data['firstName']) 
+            && !empty($data['lastName']) 
+            && !empty($data['address']) 
+            && !empty($data['id']))
+        {
+            $error = [];
+            // ici mes filtres 
+             
+            // si c'est bon j'enregistre 
+            if(count($error) == 0){
+
+                $this->_user->updateInfo($data);
+                $_SESSION['firstName']      = htmlspecialchars($data['firstName']);
+                $_SESSION['lastName']       = htmlspecialchars($data['lastName']);
+                $_SESSION['address']        = htmlspecialchars($data['address']);
+                return 'la modification à bien été prise en compte';
+
+            }
+            
+        } else {
+
+            return " veuillez remplir tous les champs";
+        
+        }
+    }
     
 }
