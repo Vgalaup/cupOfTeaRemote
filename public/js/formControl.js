@@ -1,4 +1,4 @@
-import managerMyAccount from './classes/managerMyAccount.js';
+import ManagerMyAccount from './classes/account/ManagerMyAccount.js';
 
 // soumission du formulaire 
 if(document.forms["formUpInfo"]){
@@ -7,7 +7,7 @@ if(document.forms["formUpInfo"]){
 
         event.preventDefault();
 
-        const manager = new managerMyAccount();
+        const manager = new ManagerMyAccount();
         manager.formUpInfo();
 
         
@@ -45,7 +45,7 @@ if(document.forms["formUpPass"]){
 
         event.preventDefault();
 
-        const manager = new managerMyAccount();
+        const manager = new ManagerMyAccount();
         manager.formUpPass();
         
         // // je recupere les valeurs du formulaire

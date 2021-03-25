@@ -1,4 +1,4 @@
-export default class displayMyAccount{
+export default class DisplayMyAccount{
 
     constructor(number){
         this.content1 = document.querySelector('.accountContent1'),

@@ -1,4 +1,4 @@
-export default class managerMyAccount{
+export default class ManagerMyAccount{
 
     formUpInfo(){
 
