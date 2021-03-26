@@ -24,7 +24,7 @@
                 <form method="POST" class="flex" id="formUpInfo">
                     <div class="alert return1 "></div>
                     <div>
-                      <input type="hidden" name="numUser" id="numUser" value="<?= $_SESSION['id'] ?>"/>
+                      <input type="hidden" name="numUser" id="numUser1" value="<?= $_SESSION['id'] ?>"/>
                     </div>
                     <div>
                       <label for="firstName"> Prenom </label>  
@@ -49,7 +49,7 @@
                 <form method="POST" class="flex" id="formUpPass">
                     <div class="alert return2 "></div>
                     <div>
-                      <input type="hidden" name="numUser" id="numUser" value="<?= $_SESSION['id'] ?>"/>
+                      <input type="hidden" name="numUser" id="numUser2" value="<?= $_SESSION['id'] ?>"/>
                     </div>
                     <div>
                       <label for="password1"> ancien password </label>  

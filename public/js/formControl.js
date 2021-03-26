@@ -12,7 +12,7 @@ if(document.forms["formUpInfo"]){
 
         
         // // je recupere les valeurs du formulaire
-        // let id = document.querySelector('#numUser').value;
+        // let id = document.querySelector('#numUser1').value;
         // let firstName = document.querySelector('#firstName').value;
         // let lastName = document.querySelector('#lastName').value;
         // let adress = document.querySelector('#adresse').value;
@@ -49,7 +49,7 @@ if(document.forms["formUpPass"]){
         manager.formUpPass();
         
         // // je recupere les valeurs du formulaire
-        // let id = document.querySelector('#numUser').value;
+        // let id = document.querySelector('#numUser2').value;
         // let password1 = document.querySelector('#password1').value;
         // let password2 = document.querySelector('#password2').value;
         // let password3 = document.querySelector('#password3').value;
