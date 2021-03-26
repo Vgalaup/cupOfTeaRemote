@@ -1,5 +1,5 @@
-import Cart from './Cart.js';
-import IconCart from './IconCart.js';
+import Cart from '../product/Cart.js';
+import IconCart from '../product/IconCart.js';
 
 
 export default class Refresh {

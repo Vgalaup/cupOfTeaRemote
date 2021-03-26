@@ -1,5 +1,5 @@
-import DataStorage from './../utilities/DataStorage.js';
-import Refresh from './Refresh.js';
+import DataStorage from '../utilities/DataStorage.js';
+import Refresh from '../utilities/Refresh.js';
 /*
 But de la classe : gestion du panier 
 methodes:

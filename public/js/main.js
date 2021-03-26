@@ -1,7 +1,7 @@
 import DisplayMyAccount from './classes/account/DisplayMyAccount.js';
 import Cart from './classes/product/Cart.js';
 import Product from './classes/product/Product.js';
-import Refresh from './classes/product/Refresh.js';
+import Refresh from './classes/utilities/Refresh.js';
 
 
 let cart                = new Cart();
