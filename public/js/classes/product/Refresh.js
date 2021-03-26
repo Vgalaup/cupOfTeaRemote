@@ -1,4 +1,5 @@
 import Cart from './Cart.js';
+import IconCart from './IconCart.js';
 
 
 export default class Refresh {
@@ -7,6 +8,7 @@ export default class Refresh {
 
         this.cartName = cart;
         this.cart = new Cart();
+        this.IconCart = new IconCart();
         
 
         this.refresh();
@@ -14,7 +16,14 @@ export default class Refresh {
     }
 
     refresh(){
-    
+        
+        if( this.cartName !== false ){
+
+            this.cart.saveCart(this.cartName);
+
+        }  
+
+        this.IconCart.DisplayAmount();
         
     }
 

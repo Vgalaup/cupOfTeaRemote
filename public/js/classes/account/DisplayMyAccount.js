@@ -9,6 +9,7 @@ export default class DisplayMyAccount{
     }
 
     whichDisplay(number){
+        
         switch (number) {
             case 1:
                 this.displayAC1()
