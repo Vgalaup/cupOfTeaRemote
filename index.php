@@ -115,6 +115,11 @@ elseif(array_key_exists('action',$_GET)){
 
         default:
             $http->redirect('index.php');
+
+        // case lié au panier 
+        case 'shopCart':
+            $path = 'shopCart.php';
+        break;
     
     }
      
