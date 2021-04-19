@@ -8,6 +8,7 @@ require_once 'app/Cookies.php';
 require_once 'models/Product.php';
 require_once 'models/Category.php';
 require_once 'models/User.php';
+require_once 'models/Orders.php';
 require_once 'controller/FormController.php';
 require_once 'controller/AjaxController.php';
 
@@ -19,6 +20,7 @@ $http            = new Https();
 $cookies         = new Cookies();
 $productModel    = new Product();
 $categoryModel   = new Category();
+$orderModel      = new Orders();
 $formController  = new FormController($userModel); // voir php3 -> exercice composition 
 
 
@@ -119,6 +121,27 @@ elseif(array_key_exists('action',$_GET)){
         // case lié au panier 
         case 'shopCart':
             $path = 'shopCart.php';
+        break;
+
+        // étape intermediare, si il est en ligne alors dans ce cas la on dirige vers la page de paiement sinon on renvoi vers la page shopCart
+        case 'confirmCart':
+            if($http->isOnline()) {
+                // j'enregistre la commande 
+                $saveOrder = $orderModel->addOne($_SESSION['id']);
+                
+                // je redirige vers une page qui affichera ma commande confirmée 
+                $http->redirect('index.php?action=order&orderId='.$saveOrder);
+                
+            }else{ 
+                // si pas connecté je le redirige vers la page qui affiche le panier 
+                $http->redirect('index.php?action=shopCart');
+                
+            }
+        break;
+        // page qui va permettre la validation de la commande 
+        case 'order':
+                        
+            $path = 'confirmCart.php';
         break;
     
     }

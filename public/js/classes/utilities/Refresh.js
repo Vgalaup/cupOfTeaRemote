@@ -25,3 +25,19 @@ export default class Refresh {
 
   }
 }
+
+
+    // refresh(){
+
+        
+    //     // gére l'affichage de la page confirmCart ( la meme chose que shopCart sans la possibilité de supprimer un produit )
+    //     if( document.querySelector('#cart_details_validate') ){
+
+    //         this.display.verifCart('confirmCart');
+
+    //     }
+
+    //     // ici on mettra la valeur du panier 
+    //     this.icon.updateIcon();
+        
+    // }

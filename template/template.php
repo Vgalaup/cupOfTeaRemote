@@ -102,13 +102,12 @@
                 </div>
             </div>
         </footer>
-        <script src="public/js/flexslider.js"></script>
         <script type="module" src="public/js/formControl.js"></script>
         <script type="module" src="public/js/main.js"></script>
         
         <!-- stripe -->
         <script src="https://js.stripe.com/v3/"></script>
-        <script src="public/js/stripe.js"></script>
+        <!-- <script src="public/js/stripe.js"></script> -->
         
 
     </body>
