@@ -72,7 +72,6 @@ export default class DisplayCart
             const td3 = this.createOneElement('td',value.quantity);
             const td4 = this.createOneElement('td',`${this.moneyFormat.formatMoneyAmount(value.price*value.quantity)}`)
             
-            console.log(page)
 
             if(page == 'shopCart'){
                 // dans cette td un boutton de suppression du produit du panier 
@@ -107,9 +106,8 @@ export default class DisplayCart
         
         for(let amount of this.panier)
         {
-            TotalAmout += (parseFloat(amount.price)* amount.qty)
+            TotalAmout += (Number(amount.price)* amount.quantity)
         }
-        
         document.querySelector('#totalAmount').textContent = `Le montant total de la commande est de 
                                                             ${this.moneyFormat.formatMoneyAmount(TotalAmout)}`
         
