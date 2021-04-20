@@ -1,5 +1,11 @@
 <?php 
 
+namespace CupOftea\models;
+
+Use PDO;
+Use CupOftea\core\Connect;
+
+
 class Orders extends Connect{
     
     protected $_pdo;

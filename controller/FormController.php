@@ -1,7 +1,10 @@
 <?php 
 
-require_once 'app/Https.php';
-require_once 'app/Cookies.php';
+namespace CupOftea\Controller;
+
+Use CupOftea\core\{Https,Cookies};
+Use CupOftea\models\User;
+
 
 
 /*
@@ -112,7 +115,7 @@ class FormController{
                 
                 // je pourrai ajouter l'adresse de l'user en cas de commande pour indiquer le lieu de livraison
                 // son pseudo , sa ville, son tel , etc ..... 
-                require_once 'app/Https.php';
+                //require_once 'app/Https.php';
                 $http = new Https();
                 $http->redirect('index.php');
                     

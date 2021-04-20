@@ -30,5 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       product.addProductToCard();
     }
+    else if (event.target.matches(".btn-delete")) {
+      event.preventDefault();
+      // console.log(event.target.dataset.product)
+      product.removeProduct(event.target.dataset.product);
+    }
   });
 });

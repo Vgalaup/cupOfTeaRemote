@@ -1,7 +1,10 @@
 <?php
 
-require_once 'models/User.php';
-require_once 'controller/FormController.php';
+namespace CupOftea\controller;
+
+Use CupOftea\models\User;
+Use CupOftea\Controller\FormController;
+
 
 class AjaxController {
     

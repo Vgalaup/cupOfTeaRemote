@@ -23,6 +23,10 @@ export default class Refresh {
       this.DisplayCart.verifCart();
     }
 
+    if(document.querySelector('#cart_details_validate')){
+      this.DisplayCart.verifCart('confirm');
+    }
+
   }
 }
 

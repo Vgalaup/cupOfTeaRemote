@@ -1,17 +1,14 @@
 <?php 
 session_start();
 
-// récupere mes classes 
-require_once 'app/Connect.php';
-require_once 'app/Https.php';
-require_once 'app/Cookies.php';
-require_once 'models/Product.php';
-require_once 'models/Category.php';
-require_once 'models/User.php';
-require_once 'models/Orders.php';
-require_once 'controller/FormController.php';
-require_once 'controller/AjaxController.php';
+Use CupOftea\Autoloader;
+Use CupOftea\Core\{Cookies,Https};
+Use CupOftea\Controller\{FormController, AjaxController};
+Use CupOftea\Models\{Product,Category,User,Orders};
 
+require_once 'Core/Autoloader.php';
+
+Autoloader::register();
 
 
 // j'intancie mes classes 
@@ -115,9 +112,6 @@ elseif(array_key_exists('action',$_GET)){
             
         break;
 
-        default:
-            $http->redirect('index.php');
-
         // case lié au panier 
         case 'shopCart':
             $path = 'shopCart.php';
@@ -127,10 +121,10 @@ elseif(array_key_exists('action',$_GET)){
         case 'confirmCart':
             if($http->isOnline()) {
                 // j'enregistre la commande 
-                $saveOrder = $orderModel->addOne($_SESSION['id']);
+                $numOrder = $orderModel->addOne($_SESSION['id']);
                 
                 // je redirige vers une page qui affichera ma commande confirmée 
-                $http->redirect('index.php?action=order&orderId='.$saveOrder);
+                $http->redirect('index.php?action=order&orderId='.$numOrder);
                 
             }else{ 
                 // si pas connecté je le redirige vers la page qui affiche le panier 
@@ -141,8 +135,10 @@ elseif(array_key_exists('action',$_GET)){
         // page qui va permettre la validation de la commande 
         case 'order':
                         
-            $path = 'confirmCart.php';
+            $path = 'order.php';
         break;
+        default:
+        $http->redirect('index.php');
     
     }
      

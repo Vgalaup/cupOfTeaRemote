@@ -1,5 +1,9 @@
 <?php 
 
+namespace CupOftea\models;
+
+Use PDO;
+Use CupOftea\core\Connect;
 
 class User extends Connect{
     
