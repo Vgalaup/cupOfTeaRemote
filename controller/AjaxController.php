@@ -2,7 +2,7 @@
 
 namespace CupOftea\controller;
 
-Use CupOftea\models\User;
+Use CupOftea\models\{User,OrderDetails};
 Use CupOftea\Controller\FormController;
 
 
@@ -26,6 +26,9 @@ class AjaxController {
     // 5 je remplis ma methode et appelle la bonne methode de la classe OrderDetail 
     public function saveOrder(array $post){
         // j'oublie pas le use en haut puis -> orderDetails.php
+        $odetails = new OrderDetails();
+        $odetails->addOrderDetail($post);
+
     }
     
 }

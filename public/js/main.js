@@ -7,6 +7,7 @@ import Order from "./classes/order/Orders.js";
 
 let cart = new Cart();
 let product = new Product();
+let orderDetail = new Order();
 
 document.addEventListener("DOMContentLoaded", () => {
   const sliders    = document.querySelectorAll('.slider-figure')
@@ -43,6 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 1 gestion des commandes 
       //  un appuie sur #makeOrderline  va enregistrer mes commandes  -> Order.js
-
+    else if(event.target.matches('#makeOrderline')){ 
+      event.preventDefault();
+      orderDetail.saveOrderDetail();
+    }
   });
 });
