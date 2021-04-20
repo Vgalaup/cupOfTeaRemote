@@ -22,5 +22,10 @@ class AjaxController {
         $message = $form->formUpInfo($data);
         return $message;
     }
+
+    // 5 je remplis ma methode et appelle la bonne methode de la classe OrderDetail 
+    public function saveOrder(array $post){
+        // j'oublie pas le use en haut puis -> orderDetails.php
+    }
     
 }

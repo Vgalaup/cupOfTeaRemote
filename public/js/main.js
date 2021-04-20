@@ -3,6 +3,7 @@ import Cart from "./classes/product/Cart.js";
 import Product from "./classes/product/Product.js";
 import Refresh from "./classes/utilities/Refresh.js";
 import Slider from "./classes/slider/Slider.js";
+import Order from "./classes/order/Orders.js";
 
 let cart = new Cart();
 let product = new Product();
@@ -35,5 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // console.log(event.target.dataset.product)
       product.removeProduct(event.target.dataset.product);
     }
+    else if(event.target.matches('#clearCart')){ 
+
+      cart.clearCart();
+    }
+
+    // 1 gestion des commandes 
+      //  un appuie sur #makeOrderline  va enregistrer mes commandes  -> Order.js
+
   });
 });

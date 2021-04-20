@@ -34,6 +34,6 @@ export default class Cart {
 
   clearCart() {
     localStorage.clear();
-    const refresh = new Refresh([]);
+    new Refresh([]);
   }
 }

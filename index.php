@@ -43,6 +43,8 @@ if(array_key_exists('ajax',$_GET)){
             $message = $ajax->formUpInfo($_POST);
             echo json_encode($message);
         break;
+        // 3 j'ajoute le case qui me permet d'enregistrer ma commande 
+            // 4 dans les instruction j'appelle la bonne methode -> AjaxController.php
     }
     
 }
