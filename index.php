@@ -1,6 +1,8 @@
 <?php 
 session_start();
 
+
+
 Use CupOftea\Autoloader;
 Use CupOftea\Core\{Cookies,Https};
 Use CupOftea\Controller\{FormController, AjaxController};
